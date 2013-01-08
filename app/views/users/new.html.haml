@@ -1,0 +1,12 @@
+%h1 Create
+= form_tag signup_path, :method => :post, :name => "user_signup", :id => "user_signup", "data-persist" => "garlic" do
+  - if @user.errors.any?
+    .error_messages
+      %h4 Error while submitting form.
+      %ul
+        - @user.errors.full_messages.uniq.each do |message|
+          %li 
+            = message
+  %input{:type => "text", :name => "user[name]", :class => "text input_field", :placeholder => "Name:", :required => "required", :tabindex => "1", :autofocus => "autofocus", :id => "user_name"}
+  %input{:type => "file", :name => "user[profile_pic]", :class => "file", :id => "user_profile_pic"}
+  %button{ :type => "submit", :name => "next", :id => "createAccount", :tabindex => "8", :class => "create" } Submit
